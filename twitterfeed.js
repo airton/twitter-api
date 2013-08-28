@@ -16,6 +16,7 @@
 			showtweetlinks: true,
 			showprofilepic: false,
 			showbuttons: false,
+			showinfos: false,
 			showdirecttweets: true
 		};
 
@@ -40,6 +41,7 @@
 			var showtweetlinks = this.options.showtweetlinks;
 			var showprofilepic = this.options.showprofilepic;
 			var showbuttons = this.options.showbuttons;
+			var showinfos = this.options.showinfos;
 
 			var twitterfeedid = this.element.id;		
 
@@ -60,9 +62,11 @@
 						var isaretweet = true;
 						var isdirect = false;
 						var tweetid = feeds[i].id_str;
+						var following = feeds[i].user.friends_count;
+                	var followers = feeds[i].user.followers_count;
+                	var tweets = feeds[i].user.statuses_count;
+                	var list = feeds[i].user.listed_count;
 
-
-						console.log(feeds[i]);
 
 						//If the tweet has been retweeted, get the profile pic of the tweeter
 						if(typeof feeds[i].retweeted_status != 'undefined'){
@@ -85,11 +89,18 @@
 								if (showtweetlinks == true) {
 									text = addlinks(text);
 								}
-									feedHTML += '<div>';
+									feedHTML += '<div class="tweet-item">';
+
+								if (showinfos == true && displayCounter == 1){
+									feedHTML += '<div class="infos">';
+									feedHTML += '<span class="username"><a href="http://twitter.com/'+tweetusername+'">@'+tweetusername+'</a></span><span class="tweets">'+tweets+' tweets</span><span class="following">'+following+' seguindo</span><span class="followers">'+followers+' seguidores</span><span class="list">'+list+' listas</span>';
+									feedHTML += '</div>';
+								}	
+
 								if (showprofilepic == true) {
-									feedHTML += '<img src="'+profileimage+'" >';
+									feedHTML += '<div class="image"><img src="'+profileimage+'" ></div>';
 								}
-									feedHTML += '<p>'+text+'</p>';
+									feedHTML += '<div class="text"><p>'+text+'</p></div>';
 
 								if (showbuttons == true) {
 									feedHTML += '<span class="buttons"><a class="reply" href="https://twitter.com/intent/tweet?in_reply_to='+tweetid+'">Reply</a>';
