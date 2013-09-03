@@ -43,14 +43,10 @@
 			var showbuttons = this.options.showbuttons;
 			var showinfos = this.options.showinfos;
 
-			var twitterfeedid = this.element.id;		
+			var twitterfeedid = this.element.id;
 
-			var loadingHTML = '';
-
-			loadingHTML += '<img src="/themes/site/img/ajax-loader-twitter.gif" alt="Carregando" />';
-
-			$.getJSON('http://lab.a2comunicacao.com.br/twitter-api/tweets.php?user='+twitterprofile+'&limit='+displaylimit,
-				function(feeds) {
+			$.ajaxSetup({ cache: true });	
+			$.getJSON('http://lab.a2comunicacao.com.br/twitter-api/tweets.php?user='+twitterprofile+'&limit='+displaylimit, function(feeds) {
 					var feedHTML = '';
 					var displayCounter = 1;
 					for (var i=0; i<feeds.length; i++) {
@@ -81,8 +77,6 @@
 						if (feeds[i].text.substr(0,1) == "@") {
 							isdirect = true;
 						}
-
-						//console.log(feeds[i]);
 
 						if (((showretweets == true) || ((isaretweet == false) && (showretweets == false))) && ((showdirecttweets == true) || ((showdirecttweets == false) && (isdirect == false)))) {
 							if ((feeds[i].text.length > 1) && (displayCounter <= displaylimit)) {
