@@ -7,7 +7,8 @@ Demo: [http://lab.a2comunicacao.com.br/twitter-api](http://lab.a2comunicacao.com
 
 ## API's cadastradas ##
 
-- @a2comunicacao
-- @a2fotografia
+- @a2ad
+- @a2img
 - @educacaosp
+- @enciclopediaf1
 

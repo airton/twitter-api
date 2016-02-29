@@ -1,7 +1,7 @@
 /*
  *  Project: Twitter Feed
  *  Description: Twiiter Feed 
- *  Author: @a2comunicacao
+ *  Author: @a2ad
  *  License: MIT
  */
 
@@ -11,7 +11,7 @@
 	var pluginName = "twitterfeed",
 		defaults = {
 			displaylimit: 1,
-			twitterprofile: "a2comunicacao",			
+			twitterprofile: "somosa2ad",			
 			showretweets: true,
 			showtweetlinks: true,
 			showprofilepic: false,
